@@ -5,6 +5,7 @@
 from keras.datasets import reuters
 import numpy as np
 from keras import models, layers
+import matplotlib.pyplot as plt
 
 # Retrieve all data and their labels using Keras
 (train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=10000)
@@ -12,9 +13,9 @@ from keras import models, layers
 
 # Vectorize your labels
 def vectorize_sequences(sequences, dimensions=10000):
-    results = np.zeros(len(sequences), dimensions)
+    results = np.zeros((len(sequences), dimensions))
     for i, sequence in enumerate(sequences):
-        results[i, sequence] = 1.
+        results[i, sequence] = 1.  # results[i, [2,5]] = 1. -> [0, 0, 1, 0, 0, 1]
     return results
 
 
@@ -24,7 +25,7 @@ x_test = vectorize_sequences(test_data)
 
 
 def one_hot_encode(labels, dimensions=46):
-    results = np.zeros(len(labels), dimensions)
+    results = np.zeros((len(labels), dimensions))
     for i, label in enumerate(labels):
         results[i, label] = 1.
     return results
@@ -41,13 +42,44 @@ model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(46, activation='softmax'))
 
 # Compile the network by choosing the loss, optimizer and metrics
-model.compile()
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
-# Fit the network
+# Validation step
+x_val = x_train[:1000]
+partial_x_train = x_train[1000:]
 
+y_val = y_train[:1000]
+partial_y_train = y_train[1000:]
+
+# Fit/train the network
+history = model.fit(partial_x_train, partial_y_train, batch_size=512, epochs=9, validation_data=(x_val, y_val))
 # Infer using the network
 
+# Plot the loss curve
+loss = history.history['loss']
+val_loss = history.history['val_loss']
 
+epochs = range(1, len(loss) + 1)
+
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
+# Plot the accuracy curve
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+
+plt.plot(epochs, acc, 'bo', label='Training accuracy')
+plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
+plt.title('Training and validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('accuracy')
+plt.legend()
+plt.show()
 
 """ Decode the paragraphs back into a String
 word_index = reuters.get_word_index()
