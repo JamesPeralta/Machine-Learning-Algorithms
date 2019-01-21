@@ -1,4 +1,6 @@
-# Imports for array-handling and plotting
+# Solves the problem of classifying handwritten digits between 0-9
+# Using a Dense Neural Network
+
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
