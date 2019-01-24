@@ -2,6 +2,7 @@
 import os, shutil
 from keras import models, layers, optimizers
 from keras.preprocessing.image import ImageDataGenerator
+import matplotlib.pyplot as plt
 from IPython.display import display
 from PIL import Image
 
@@ -63,6 +64,27 @@ history = model.fit_generator(
 model.save('cats_and_dogs_small_1.h5')
 
 # Plot your data here
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1, len(acc) + 1)
+
+plt.plot(epochs, acc, 'bo', label='Training acc')
+plt.plot(epochs, val_acc, 'b', label='Validation acc')
+plt.title('Training and validation Accuracy')
+plt.legend()
+
+plt.figure()
+
+
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.legend()
+plt.show()
+
 
 
 # Create directories for training, validation, and testing
