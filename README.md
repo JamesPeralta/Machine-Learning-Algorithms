@@ -8,5 +8,6 @@ Dense Neural Networks:
 - IMBD Movie Review Classifier
 - MNIST Digit Recognizer v1
 - Reuters News Classifier
+
 Convolutional Neural Networks:
 - MNIST Digit Recognizer v2
