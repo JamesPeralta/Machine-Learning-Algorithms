@@ -12,3 +12,6 @@ Dense Neural Networks:
 Convolutional Neural Networks:
 - Cats and Dogs Classifier
 - MNIST Digit Recognizer v2
+
+Recurrent Neural Networks:
+- IMBD Movie Review Classifier

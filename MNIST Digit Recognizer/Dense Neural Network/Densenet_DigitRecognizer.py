@@ -22,6 +22,9 @@ Images_test = Images_test.reshape(10000, 784)
 Images_train = Images_train.astype('float32')
 Images_test = Images_test.astype('float32')
 
+print(Labels_train)
+print(type(Labels_train))
+
 # Normalize the data to help with the training
 Images_train = Images_train / 255
 Images_test = Images_test / 255
@@ -31,6 +34,7 @@ n_classes = 10
 Labels_train = np_utils.to_categorical(Labels_train, n_classes)
 Labels_test = np_utils.to_categorical(Labels_test, n_classes)
 
+print(Labels_train)
 # Building the network
 # First Layer
 model = Sequential()
