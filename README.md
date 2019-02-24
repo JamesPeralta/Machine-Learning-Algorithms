@@ -16,5 +16,8 @@ Convolutional Neural Networks:
 Simple RNN:
 - IMBD Movie Review Classifier
 
-LSTM RNN:
+Long Short Term memory (LSTM) RNN:
 - IMBD Movie Review Classifier
+
+Gated Recurrent Unit (GRU) RNN
+- Temperature Forecasting
