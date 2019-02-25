@@ -5,19 +5,22 @@ In this repository I will be uploading all of my Machine Learning Algorithms! Se
 ### Legend
 Dense Neural Networks:
 - Boston Housing Price Predicter
-- IMBD Movie Review Classifier
+- IMDB Movie Review Classifier
 - MNIST Digit Recognizer
 - Reuters News Classifier
 
-Convolutional Neural Networks:
+1D Convolutional Neural Networks:
+- IMDB Movie Review Classifier
+
+2D Convolutional Neural Networks:
 - Cats and Dogs Classifier
 - MNIST Digit Recognizer
 
 Simple RNN:
-- IMBD Movie Review Classifier
+- IMDB Movie Review Classifier
 
 Long Short Term memory (LSTM) RNN:
-- IMBD Movie Review Classifier
+- IMDB Movie Review Classifier
 
 Gated Recurrent Unit (GRU) RNN
 - Temperature Forecasting
